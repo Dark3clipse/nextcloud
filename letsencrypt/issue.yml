@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  letsencrypt-nginx:
+    image: nginx:latest
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+      - ./public:/usr/share/nginx/html
+    ports:
+      - "80:80"
+    networks:
+      - letsencrypt-net
+  letsencrypt-issue:
+    image: clover/certbot:latest
+    volumes:
+      - letsencrypt:/etc/letsencrypt
+      - letsencrypt-lib:/var/lib/letsencrypt
+      - letsencrypt-log:/var/log/letsencrypt
+      - ./public:/data/letsencrypt
+    command: /bin/sh -c "
+         certbot certonly --webroot --email sophiahadash@gmail.com --agree-tos --no-eff-email --webroot-path=/data/letsencrypt -d nextcloud.sophiahadash.com"
+    depends_on:
+      - letsencrypt-nginx
+  dhparam:
+    image: ubuntu:18.04
+    volumes:
+      - letsencrypt:/etc/letsencrypt
+    command: /bin/sh -c "apt-get update -qqy && apt-get install openssl -y && openssl dhparam -out /etc/letsencrypt/dhparam-2048.pem 2048"
+volumes:
+  letsencrypt:
+    driver: local
+  letsencrypt-lib:
+    driver: local
+  letsencrypt-log:
+    driver: local
+networks:
+  letsencrypt-net:
+    driver: bridge
