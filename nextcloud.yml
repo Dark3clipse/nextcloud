@@ -5,12 +5,12 @@ services:
     image: mariadb
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     volumes:
-      - /media/shadash-hdd1/nextcloud-db:/var/lib/mysql
+      - $NEXTCLOUD_PATH/mysql:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
-      - MYSQL_PASSWORD=$MYSQL_PASSWORD
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_USER
     deploy:
       mode: replicated
       replicas: 1
@@ -21,7 +21,7 @@ services:
   nextcloud:
     image: nextcloud:fpm
     volumes:
-      - /media/shadash-hdd1/nextcloud:/var/www/html
+      - $NEXTCLOUD_PATH/web:/var/www/html
     environment:
       - MYSQL_HOST=mysql
     deploy:
@@ -42,7 +42,7 @@ services:
       - letsencrypt:/etc/letsencrypt
       - nginx_log:/var/log/nginx
       - ./letsencrypt/production_public:/data/letsencrypt
-      - /media/shadash-hdd1/nextcloud:/var/www/html
+      - $NEXTCLOUD_PATH/web:/var/www/html
     deploy:
       mode: replicated
       replicas: 1
