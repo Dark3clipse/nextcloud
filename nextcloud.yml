@@ -16,7 +16,7 @@ services:
       replicas: 1
       restart_policy:
         condition: on-failure
-    network:
+    networks:
       - nextcloud-net
   nextcloud:
     image: nextcloud:fpm
@@ -31,7 +31,7 @@ services:
         condition: on-failure
     depends_on:
       - mysql
-    network:
+    networks:
       - nextcloud-net
   nginx:
     image: nginx
@@ -57,10 +57,13 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    network:
+    networks:
       - nextcloud-net
 volumes:
   letsencrypt:
     driver: local
   nginx_log:
     driver: local
+networks:
+  nextcloud-net:
+    driver: bridge
