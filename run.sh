@@ -15,4 +15,4 @@ export MYSQL_DATABASE=nextcloud
 export MYSQL_USER=nextcloud
 
 # deploy
-docker-compose --env-file ./.env -f nextcloud.yml -p nextcloud up -d
+docker-compose --env-file ./.env -f nextcloud.yml -p letsencrypt up -d
