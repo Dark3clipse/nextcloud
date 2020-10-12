@@ -63,7 +63,10 @@ services:
     networks:
       - nextcloud-net
   rsnapshot:
-    image: helmuthb/rsnapshot:latest
+    build:
+      context: ./rsnapshot-docker
+      dockerfile: Dockerfile
+    image: shadash-rsnapshot-docker:latest
     volumes:
       - $BACKUP_PATH:/backup
       - $NEXTCLOUD_PATH:/data
@@ -98,6 +101,7 @@ services:
       - letsencrypt-log:/var/log/letsencrypt
       - ./letsencrypt/production_public:/data/letsencrypt
     command: [ "certbot", "renew", "--webroot",  "-w", "/data/letsencrypt", "--quiet" ]
+    restart: always
     networks:
       - nextcloud-net
 volumes:

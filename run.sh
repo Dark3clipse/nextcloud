@@ -15,5 +15,8 @@ export MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
 export MYSQL_DATABASE=nextcloud
 export MYSQL_USER=nextcloud
 
+# clone rsnapshot-docker
+git clone https://github.com/helmuthb/rsnapshot-docker
+
 # deploy
 docker-compose --env-file ./.env -f nextcloud.yml -p letsencrypt up -d
