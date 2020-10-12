@@ -1,6 +1,7 @@
 FROM clover/certbot:latest
+MAINTAINER shadash <sophiahadash@gmail.com>
 
-RUN apt-get update && apt-get install -y cron bash wget
 RUN echo "0 0 1 * * root certbot renew --webroot -w /data/letsencrypt --quiet" >/etc/cron.d/certbot
 
-CMD ["cron", "-f"]
+ENTRYPOINT []
+CMD ["crond", "-f", "-d", "1"]
