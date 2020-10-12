@@ -87,8 +87,25 @@ services:
     restart: always
     networks:
       - nextcloud-net
+  letsencrypt-renew:
+    build:
+      context: ./letsencrypt
+      dockerfile: Renew
+    image: shadash-certbot-cron:latest
+    volumes:
+      - letsencrypt:/etc/letsencrypt
+      - letsencrypt-lib:/var/lib/letsencrypt
+      - letsencrypt-log:/var/log/letsencrypt
+      - ./letsencrypt/production_public:/data/letsencrypt
+    command: [ "certbot", "renew", "--webroot",  "-w", "/data/letsencrypt", "--quiet" ]
+    networks:
+      - letsencrypt-net
 volumes:
   letsencrypt:
+    driver: local
+  letsencrypt-lib:
+    driver: local
+  letsencrypt-log:
     driver: local
   nginx_log:
     driver: local
