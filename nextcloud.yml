@@ -100,7 +100,6 @@ services:
       - letsencrypt-lib:/var/lib/letsencrypt
       - letsencrypt-log:/var/log/letsencrypt
       - ./letsencrypt/production_public:/data/letsencrypt
-    command: [ "certbot", "renew", "--webroot",  "-w", "/data/letsencrypt", "--quiet" ]
     restart: always
     networks:
       - nextcloud-net
