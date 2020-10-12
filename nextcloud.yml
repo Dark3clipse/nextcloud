@@ -99,7 +99,7 @@ services:
       - ./letsencrypt/production_public:/data/letsencrypt
     command: [ "certbot", "renew", "--webroot",  "-w", "/data/letsencrypt", "--quiet" ]
     networks:
-      - letsencrypt-net
+      - nextcloud-net
 volumes:
   letsencrypt:
     driver: local
