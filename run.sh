@@ -20,3 +20,8 @@ git clone https://github.com/helmuthb/rsnapshot-docker
 
 # deploy
 docker-compose --env-file ./.env -f nextcloud.yml -p letsencrypt up -d
+
+# create cron-job entry
+croncmd="docker exec -u www-data nextcloud:fpm php -f /var/www/html/cron.php"
+cronjob="*/5 * * * * $croncmd"
+( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
