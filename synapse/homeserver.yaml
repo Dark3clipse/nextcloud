@@ -737,7 +737,7 @@ database:
   args:
     user: synapse
     password: aQi%!xo6vE82$4nU
-    host: postgresql
+    host: synapse-postgresql
     database: synapse
     cp_min: 5
     cp_max: 10
