@@ -96,6 +96,7 @@ services:
     volumes:
       - $NEXTCLOUD_PATH/mautrix-whatsapp:/data:z
       - ./synapse/whatsapp/config.yaml:/data/config.yaml
+      - ./synapse/whatsapp/registration.yaml:/data/registration.yaml
     restart: always
     networks:
       - nextcloud-net
