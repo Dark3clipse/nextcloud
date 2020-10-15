@@ -65,15 +65,6 @@ services:
       - "$ROOT/overrides/rspamd:/etc/rspamd/override.d:ro"
     depends_on:
       - front
-  admin:
-    image: mailu/admin:$VERSION
-    restart: always
-    env_file: mailu.env
-    volumes:
-      - "$ROOT/data:/data"
-      - "$ROOT/dkim:/dkim"
-    depends_on:
-      - redis
   fetchmail:
     image: mailu/fetchmail:$VERSION
     restart: always
