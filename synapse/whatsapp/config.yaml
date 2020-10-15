@@ -217,8 +217,8 @@ bridge:
   #     mxid - Specific user
   permissions:
     "*": relaybot
-    "example.com": user
-    "@admin:example.com": admin
+    "synapse.sophiahadash.nl": user
+    "@shadash:synapse.sophiahadash.nl": admin
 
   relaybot:
     # Whether or not relaybot support is enabled.
@@ -226,7 +226,7 @@ bridge:
     # The management room for the bot. This is where all status notifications are posted and
     # in this room, you can use `!wa <command>` instead of `!wa relaybot <command>`. Omitting
     # the command prefix completely like in user management rooms is not possible.
-    management: !foo:example.com
+    management: !shadash:synapse.sophiahadash.nl
     # List of users to invite to all created rooms that include the relaybot.
     invites: []
     # The formats to use when sending messages to WhatsApp via the relaybot.
