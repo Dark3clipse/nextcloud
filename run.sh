@@ -37,6 +37,9 @@ sed -i "s#__SYNAPSE_KEY_FORM__#$SYNAPSE_KEY_FORM#g" ./synapse/homeserver.yaml
 sed -i "s#__SYNAPSE_KEY_SIGNING__#$SYNAPSE_KEY_SIGNING#g" ./synapse/synapse.sophiahadash.nl.signing.key
 sed -i "s#__SYNAPSE_POSTGRESS_PASSWORD__#$SYNAPSE_POSTGRESS_PASSWORD#g" ./synapse/whatsapp/config.yaml
 
+# generate synapse bridge registrations
+docker run --rm -v $NEXTCLOUD_PATH/mautrix-whatsapp:/data:z dock.mau.dev/tulir/mautrix-whatsapp:latest
+cp $NEXTCLOUD_PATH/mautrix-whatsapp/registration.yaml ./synapse/whatsapp/registration.yaml
 
 # deploy
 docker-compose --env-file ./.env -f nextcloud.yml -p letsencrypt up -d
