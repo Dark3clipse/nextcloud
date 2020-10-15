@@ -52,3 +52,5 @@ cronjob="*/5 * * * * $croncmd"
 croncmd="docker-compose -f /home/shadash/nextcloud/letsencrypt/renew.yml -p letsencrypt up && docker-compose -f /home/shadash/nextcloud.yml -p letsencrypt up -d"
 cronjob="0 23 * * * $croncmd"
 ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
+
+docker exec postgres psql -U synapse -c "create database whatsapp"
