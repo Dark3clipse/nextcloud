@@ -91,6 +91,14 @@ services:
       - $NEXTCLOUD_PATH/synapse-postgres:/var/lib/postgresql/
     networks:
       - nextcloud-net
+  synapse-bridge-whatsapp:
+    image: dock.mau.dev/tulir/mautrix-whatsapp:latest
+    volumes:
+      - $NEXTCLOUD_PATH/mautrix-whatsapp:/data:z
+      - ./synapse/whatsapp/config.yaml:/data/config.yaml
+    restart: always
+    networks:
+      - nextcloud-net
   rsnapshot:
     build:
       context: ./rsnapshot-docker
