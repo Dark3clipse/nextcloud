@@ -19,7 +19,8 @@ services:
       - ./public:/data/letsencrypt
     command: /bin/sh -c "
          certbot certonly --webroot --email sophiahadash@gmail.com --agree-tos --no-eff-email --webroot-path=/data/letsencrypt -d nextcloud.sophiahadash.nl &&
-         certbot certonly --webroot --email sophiahadash@gmail.com --agree-tos --no-eff-email --webroot-path=/data/letsencrypt -d hadash.nl"
+         certbot certonly --webroot --email sophiahadash@gmail.com --agree-tos --no-eff-email --webroot-path=/data/letsencrypt -d hadash.nl  &&
+         certbot certonly --webroot --email sophiahadash@gmail.com --agree-tos --no-eff-email --webroot-path=/data/letsencrypt -d mail.hadash.nl"
     depends_on:
       - letsencrypt-nginx
   dhparam:
