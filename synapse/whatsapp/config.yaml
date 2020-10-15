@@ -1,7 +1,7 @@
 # Homeserver details.
 homeserver:
   # The address that this appservice can use to connect to the homeserver.
-  address: http://synapse:8008
+  address: https://synapse.sophiahadash.nl
   # The domain of the homeserver (for MXIDs, etc).
   domain: synapse.sophiahadash.nl
 
