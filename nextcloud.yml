@@ -75,6 +75,8 @@ services:
       timeout: 10s
       retries: 3
     restart: always
+    depends_on:
+      - synapse-postgresql
     networks:
       - nextcloud-net
   synapse-postgresql:
