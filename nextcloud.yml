@@ -94,7 +94,7 @@ services:
     networks:
       - nextcloud-net
   synapse-bridge-whatsapp:
-    image: dock.mau.dev/tulir/mautrix-whatsapp:latest
+    image: dock.mau.dev/tulir/mautrix-whatsapp:00966626857b694aba78f4d40ae0a048f8da3ae4-amd64
     volumes:
       - $NEXTCLOUD_PATH/mautrix-whatsapp:/data:z
       - ./synapse/whatsapp/config.yaml:/data/config.yaml
