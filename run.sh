@@ -38,6 +38,7 @@ sed -i "s#__SYNAPSE_KEY_SIGNING__#$SYNAPSE_KEY_SIGNING#g" ./synapse/synapse.soph
 sed -i "s#__SYNAPSE_POSTGRESS_PASSWORD__#$SYNAPSE_POSTGRESS_PASSWORD#g" ./synapse/whatsapp/config.yaml
 
 # generate synapse bridge registrations
+cp ./synapse/whatsapp/config.yaml $NEXTCLOUD_PATH/mautrix-whatsapp/config.yaml
 docker run --rm -v $NEXTCLOUD_PATH/mautrix-whatsapp:/data:z dock.mau.dev/tulir/mautrix-whatsapp:latest
 
 # deploy
