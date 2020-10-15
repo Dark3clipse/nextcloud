@@ -53,4 +53,5 @@ croncmd="docker-compose -f /home/shadash/nextcloud/letsencrypt/renew.yml -p lets
 cronjob="0 23 * * * $croncmd"
 ( crontab -l | grep -v -F "$croncmd" ; echo "$cronjob" ) | crontab -
 
+# create whatsapp database for synapse
 docker exec postgres psql -U synapse -c "create database whatsapp"
