@@ -1,0 +1,5 @@
+FROM mailu/nginx:$VERSION
+MAINTAINER Sophia Hadash <s.hadash@tue.nl>
+
+RUN mkdir -p /letsencrypt-root/live/hadash.nl
+RUN ln -s /letsencrypt-root/live/hadash.nl /certs
