@@ -67,7 +67,7 @@ services:
     container_name: synapse
     volumes:
       - $NEXTCLOUD_PATH/synapse:/data
-      - ./synapse/homeserver.yaml:/data/homeserver.yml
+      - ./synapse/homeserver.yaml:/data/homeserver.yaml
     healthcheck:
       test: [ "CMD", "curl", "-fSs", "http://localhost:8008/health" ]
       interval: 1m
