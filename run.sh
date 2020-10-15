@@ -20,11 +20,11 @@ git clone https://github.com/helmuthb/rsnapshot-docker
 
 
 # generate synapse default config
-#docker run -it --rm \
-#    --mount type=bind,src=$NEXTCLOUD_PATH/synapse,target=/data \
-#    -e SYNAPSE_SERVER_NAME=synapse.sophiahadash.nl \
-#    -e SYNAPSE_REPORT_STATS=yes \
-#    matrixdotorg/synapse:3af9bb7198c64c6e6001b96cbfadc0bc2123d318-multiarch generate
+docker run -it --rm \
+    --mount type=bind,src=$NEXTCLOUD_PATH/synapse,target=/data \
+    -e SYNAPSE_SERVER_NAME=synapse.sophiahadash.nl \
+    -e SYNAPSE_REPORT_STATS=yes \
+    matrixdotorg/synapse:3af9bb7198c64c6e6001b96cbfadc0bc2123d318-multiarch generate
 
 # deploy
 docker-compose --env-file ./.env -f nextcloud.yml -p letsencrypt up -d
