@@ -736,7 +736,7 @@ database:
   name: psycopg2
   args:
     user: synapse
-    password: aQi%!xo6vE82$4nU
+    password: __SYNAPSE_POSTGRESS_PASSWORD__
     host: synapse-postgresql
     database: synapse
     cp_min: 5
@@ -1176,7 +1176,7 @@ account_validity:
 # If set, allows registration of standard or admin accounts by anyone who
 # has the shared secret, even if registration is otherwise disabled.
 #
-registration_shared_secret: "a8.+:4NOx_qsYt25MA-Uw5Y8XVbe+9ET#_OR1aV_P#wP6kUsDo"
+registration_shared_secret: __SYNAPSE_KEY_REG__
 
 # Set the number of bcrypt rounds used to generate password hash.
 # Larger numbers increase the work factor needed to generate the hash.
@@ -1391,13 +1391,13 @@ app_service_config_files:
 # the registration_shared_secret is used, if one is given; otherwise,
 # a secret key is derived from the signing key.
 #
-macaroon_secret_key: "HvffSn+gzx-V=5tV#1uV5NXcm;Sh5P&1_HNFg,:+WYX83d9v0S"
+macaroon_secret_key: __SYNAPSE_KEY_MACARON__
 
 # a secret which is used to calculate HMACs for form values, to stop
 # falsification of values. Must be specified for the User Consent
 # forms to work.
 #
-form_secret: "jb#WVkv;m~fO@W.7VEAaUaHTbrLU^rPkx-XlR;-+WFByJO.HU,"
+form_secret: __SYNAPSE_KEY_FORM__
 
 ## Signing Keys ##
 
