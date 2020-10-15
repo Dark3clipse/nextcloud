@@ -62,8 +62,19 @@ services:
       - "443:443"
     networks:
       - nextcloud-net
-  mailu:
-    image:
+  synapse:
+    image: matrixdotorg/synapse:3af9bb7198c64c6e6001b96cbfadc0bc2123d318-multiarch
+    container_name: synapse
+    volumes:
+      - $NEXTCLOUD_PATH/synapse:/data
+      - ./synapse/homeserver.yaml:/data/homeserver.yml
+    healthcheck:
+      test: [ "CMD", "curl", "-fSs", "http://localhost:8008/health" ]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+    networks:
+      - nextcloud-net
   rsnapshot:
     build:
       context: ./rsnapshot-docker
