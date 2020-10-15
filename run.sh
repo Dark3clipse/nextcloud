@@ -9,6 +9,7 @@ fi
 if [ -z "$MYSQL_PASSWORD" ]; then echo "Environment variable MYSQL_PASSWORD is unset or empty." && exit 1; fi
 if [ -z "$NEXTCLOUD_PATH" ]; then echo "Environment variable NEXTCLOUD_PATH is unset or empty." && exit 1; fi
 if [ -z "$NEXTCLOUD_PATH" ]; then echo "Environment variable BACKUP_PATH is unset or empty." && exit 1; fi
+if [ -z "$SYNAPSE_POSTGRESS_PASSWORD" ]; then echo "Environment variable SYNAPSE_POSTGRESS_PASSWORD is unset or empty." && exit 1; fi
 
 # define some derivative variables
 export MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD

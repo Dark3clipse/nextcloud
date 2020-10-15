@@ -74,6 +74,19 @@ services:
       interval: 1m
       timeout: 10s
       retries: 3
+    restart: always
+    networks:
+      - nextcloud-net
+  synapse-postgresql:
+    image: postgres:9.6.19
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: $SYNAPSE_POSTGRESS_PASSWORD
+      POSTGRES_USER: synapse
+      POSTGRES_DB: synapse
+      POSTGRES_INITDB_ARGS: "--encoding='UTF8' --lc-collate='C' --lc-ctype='C'"
+    volumes:
+      - $NEXTCLOUD_PATH/synapse-postgres:/var/lib/postgresql/
     networks:
       - nextcloud-net
   rsnapshot:
