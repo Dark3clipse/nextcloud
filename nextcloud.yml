@@ -69,7 +69,7 @@ services:
       - $NEXTCLOUD_PATH/synapse:/data
       - ./synapse/homeserver.yaml:/data/homeserver.yaml
       - ./synapse/synapse.sophiahadash.nl.signing.key:/data/synapse.sophiahadash.nl.signing.key
-      - ./synapse/whatsapp/registration.yaml:/data/bridges/whatsapp/registration.yaml
+      - $NEXTCLOUD_PATH/mautrix-whatsapp/registration.yaml:/data/bridges/whatsapp/registration.yaml
     healthcheck:
       test: [ "CMD", "curl", "-fSs", "http://localhost:8008/health" ]
       interval: 1m
@@ -97,7 +97,6 @@ services:
     volumes:
       - $NEXTCLOUD_PATH/mautrix-whatsapp:/data:z
       - ./synapse/whatsapp/config.yaml:/data/config.yaml
-      - ./synapse/whatsapp/registration.yaml:/data/registration.yaml
     restart: always
     networks:
       - nextcloud-net
