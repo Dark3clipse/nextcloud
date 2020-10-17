@@ -1,6 +1,18 @@
 version: '2'
 
 services:
+  front:
+    build:
+      context: .
+      dockerfile: Front
+    image: shadash-mailu-nginx:latest
+    restart: always
+    env_file: mailu.env
+    logging:
+      driver: $LOG_DRIVER
+    volumes:
+      - letsencrypt:/letsencrypt-root
+      - $ROOT/overrides/nginx:/overrides:ro
   redis:
     image: redis:alpine
     restart: always
