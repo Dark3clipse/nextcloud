@@ -72,7 +72,7 @@ services:
     volumes:
       - "$ROOT/filter:/data"
   webdav:
-    image: mailu/radicale:arm64-pr-1421
+    image: mailutest/radicale:arm64-pr-1421
     restart: always
     env_file: mailu.env
     volumes:
