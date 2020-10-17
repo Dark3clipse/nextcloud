@@ -2,7 +2,10 @@ version: '2'
 
 services:
   front:
-    image: mailutest/nginx:pr-1421
+    build:
+      context: .
+      dockerfile: Front
+    image: shadash-mailu-nginx:latest
     restart: always
     env_file: mailu.env
     logging:
