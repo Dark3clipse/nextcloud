@@ -2,10 +2,7 @@ version: '2'
 
 services:
   front:
-    build:
-      context: .
-      dockerfile: Front
-    image: shadash-mailu-nginx:latest
+    image: mailutest/nginx:pr-1421
     restart: always
     env_file: mailu.env
     logging:
@@ -21,7 +18,6 @@ services:
       - $BIND_ADDRESS4:465:465
       - $BIND_ADDRESS4:587:587
     volumes:
-      - letsencrypt:/letsencrypt-root
       - $ROOT/overrides/nginx:/overrides:ro
   redis:
     image: redis:alpine
