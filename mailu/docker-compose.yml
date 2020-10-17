@@ -65,6 +65,18 @@ services:
       - "$ROOT/overrides/rspamd:/etc/rspamd/override.d:ro"
     depends_on:
       - front
+  antivirus:
+    image: mailutest/clamav:pr-1421
+    restart: always
+    env_file: .env
+    volumes:
+      - "$ROOT/filter:/data"
+  webdav:
+    image: mailu/radicale:pr-1421
+    restart: always
+    env_file: .env
+    volumes:
+      - "$ROOT/dav:/data"
   admin:
     image: mailutest/admin:pr-1421
     restart: always
@@ -74,6 +86,14 @@ services:
       - "$ROOT/dkim:/dkim"
     depends_on:
       - redis
+  webmail:
+    image: mailutest/rainloop:pr-1421
+    restart: always
+    env_file: .env
+    volumes:
+      - "$ROOT/webmail:/data"
+    depends_on:
+      - imap
   fetchmail:
     image: mailu/fetchmail:$VERSION
     restart: always
