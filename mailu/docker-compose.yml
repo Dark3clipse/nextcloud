@@ -68,13 +68,13 @@ services:
   antivirus:
     image: mailutest/clamav:pr-1421
     restart: always
-    env_file: .env
+    env_file: mailu.env
     volumes:
       - "$ROOT/filter:/data"
   webdav:
     image: mailu/radicale:pr-1421
     restart: always
-    env_file: .env
+    env_file: mailu.env
     volumes:
       - "$ROOT/dav:/data"
   admin:
@@ -89,7 +89,7 @@ services:
   webmail:
     image: mailutest/rainloop:pr-1421
     restart: always
-    env_file: .env
+    env_file: mailu.env
     volumes:
       - "$ROOT/webmail:/data"
     depends_on:
