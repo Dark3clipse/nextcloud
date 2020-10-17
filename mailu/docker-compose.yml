@@ -85,9 +85,6 @@ services:
     image: mailutest/fetchmail:pr-1421
     restart: always
     env_file: mailu.env
-volumes:
-  letsencrypt:
-    driver: local
 networks:
   default:
     driver: bridge
