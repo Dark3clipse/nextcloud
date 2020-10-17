@@ -1,8 +1,6 @@
 FROM mailutest/nginx:pr-1421
 MAINTAINER Sophia Hadash <s.hadash@tue.nl>
 
-RUN mkdir -p /mailu/certs
-RUN cp /etc/letsencrypt/live/hadash.nl/privkey.pem /mailu/certs/key.pem
-RUN ln -s /etc/letsencrypt/live/hadash.nl/privkey.pem /mailu/certs/key.pem
-RUN cp /etc/letsencrypt/live/hadash.nl/fullchain.pem /mailu/certs/cert.pem
-RUN ln -s /etc/letsencrypt/live/hadash.nl/fullchain.pem /mailu/certs/cert.pem
+CMD cp /letsencrypt-root/live/hadash.nl/privkey.pem /mailu/certs/key.pem && \
+	cp /letsencrypt-root/live/hadash.nl/fullchain.pem /mailu/certs/cert.pem && \
+	/start.py
