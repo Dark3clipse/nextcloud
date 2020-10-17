@@ -8,15 +8,15 @@ services:
     logging:
       driver: $LOG_DRIVER
     ports:
-      - $BIND_ADDRESS4:8080:80
-      - $BIND_ADDRESS4:4430:443
-      - $BIND_ADDRESS4:110:110
-      - $BIND_ADDRESS4:143:143
-      - $BIND_ADDRESS4:993:993
-      - $BIND_ADDRESS4:995:995
-      - $BIND_ADDRESS4:25:25
-      - $BIND_ADDRESS4:465:465
-      - $BIND_ADDRESS4:587:587
+      - 0.0.0.0:8080:80
+      - 0.0.0.0:4430:443
+      - 0.0.0.0:110:110
+      - 0.0.0.0:143:143
+      - 0.0.0.0:993:993
+      - 0.0.0.0:995:995
+      - 0.0.0.0:25:25
+      - 0.0.0.0:465:465
+      - 0.0.0.0:587:587
     volumes:
       - $ROOT/overrides/nginx:/overrides:ro
   redis:

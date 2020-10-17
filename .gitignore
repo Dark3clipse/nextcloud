@@ -1,4 +1,4 @@
 .env
 .idea
 rsnapshot-docker/
-mailu/mailu.env
+./mailu/mailu.env
