@@ -13,8 +13,6 @@ services:
     volumes:
       - $ROOT/mail:/mail"
       - $ROOT/overrides/dovecot:/overrides:ro
-    depends_on:
-      - front
   smtp:
     image: mailutest/postfix:pr-1421
     restart: always
@@ -22,8 +20,6 @@ services:
     volumes:
       - $ROOT/mailqueue:/queue
       - $ROOT/overrides/postfix:/overrides:ro
-    depends_on:
-      - front
   antispam:
     image: mailutest/rspamd:pr-1421
     restart: always
@@ -32,8 +28,6 @@ services:
       - $ROOT/filter:/var/lib/rspamd
       - $ROOT/dkim:/dkim:ro
       - $ROOT/overrides/rspamd:/etc/rspamd/override.d:ro
-    depends_on:
-      - front
   antivirus:
     image: mailutest/clamav:pr-1421
     restart: always
