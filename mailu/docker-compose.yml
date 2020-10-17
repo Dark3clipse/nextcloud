@@ -2,7 +2,10 @@ version: '2'
 
 services:
   front:
-    image: mailutest/nginx:pr-1421
+    build:
+      context: .
+      dockerfile: Front
+    image: shadash-mailu-nginx:latest
     restart: always
     env_file: mailu.env
     logging:
@@ -18,6 +21,7 @@ services:
       - 0.0.0.0:465:465
       - 0.0.0.0:587:587
     volumes:
+      - letsencrypt:/letsencrypt-root
       - $ROOT/overrides/nginx:/overrides:ro
   redis:
     image: redis:alpine
@@ -85,6 +89,9 @@ services:
     image: mailutest/fetchmail:pr-1421
     restart: always
     env_file: mailu.env
+volumes:
+  letsencrypt:
+    driver: local
 networks:
   default:
     driver: bridge

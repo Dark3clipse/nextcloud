@@ -12,4 +12,4 @@ if [ -z "$ROOT" ]; then echo "Environment variable ROOT is unset or empty." && e
 if [ -z "$SUBNET" ]; then echo "Environment variable SUBNET is unset or empty." && exit 1; fi
 
 # deploy
-docker-compose --env-file ./mailu.env -f docker-compose.yml -p mailu up -d
+docker-compose --env-file ./mailu.env -f docker-compose.yml -p letsencrypt up -d
