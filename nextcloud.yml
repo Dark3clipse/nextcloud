@@ -36,7 +36,10 @@ services:
     networks:
       - nextcloud-net
   nginx:
-    image: nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    image: shadash-nginx:latest
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/conf.d:/etc/nginx/conf.d
