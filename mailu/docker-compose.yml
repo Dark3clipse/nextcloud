@@ -13,11 +13,17 @@ services:
     volumes:
       - letsencrypt:/letsencrypt-root
       - $ROOT/overrides/nginx:/overrides:ro
+    networks:
+      - default
+      - nextcloud-net
   redis:
     image: redis:alpine
     restart: always
     volumes:
       - $ROOT/redis:/data
+    networks:
+      - default
+      - nextcloud-net
   imap:
     image: mailutest/dovecot:pr-1421
     restart: always
@@ -25,6 +31,9 @@ services:
     volumes:
       - $ROOT/mail:/mail"
       - $ROOT/overrides/dovecot:/overrides:ro
+    networks:
+      - default
+      - nextcloud-net
   smtp:
     image: mailutest/postfix:pr-1421
     restart: always
@@ -32,6 +41,9 @@ services:
     volumes:
       - $ROOT/mailqueue:/queue
       - $ROOT/overrides/postfix:/overrides:ro
+    networks:
+      - default
+      - nextcloud-net
   antispam:
     image: mailutest/rspamd:pr-1421
     restart: always
@@ -40,18 +52,27 @@ services:
       - $ROOT/filter:/var/lib/rspamd
       - $ROOT/dkim:/dkim:ro
       - $ROOT/overrides/rspamd:/etc/rspamd/override.d:ro
+    networks:
+      - default
+      - nextcloud-net
   antivirus:
     image: mailutest/clamav:pr-1421
     restart: always
     env_file: mailu.env
     volumes:
       - $ROOT/filter:/data
+    networks:
+      - default
+      - nextcloud-net
   webdav:
     image: mailutest/radicale:arm64-pr-1421
     restart: always
     env_file: mailu.env
     volumes:
       - $ROOT/dav:/data
+    networks:
+      - default
+      - nextcloud-net
   admin:
     image: mailutest/admin:pr-1421
     restart: always
@@ -61,6 +82,9 @@ services:
       - $ROOT/dkim:/dkim
     depends_on:
       - redis
+    networks:
+      - default
+      - nextcloud-net
   webmail:
     image: mailutest/rainloop:pr-1421
     restart: always
@@ -69,10 +93,16 @@ services:
       - $ROOT/webmail:/data
     depends_on:
       - imap
+    networks:
+      - default
+      - nextcloud-net
   fetchmail:
     image: mailutest/fetchmail:pr-1421
     restart: always
     env_file: mailu.env
+    networks:
+      - default
+      - nextcloud-net
 volumes:
   letsencrypt:
     driver: local
@@ -83,3 +113,5 @@ networks:
       driver: default
       config:
         - subnet: $SUBNET
+  nextcloud-net:
+    driver: bridge
