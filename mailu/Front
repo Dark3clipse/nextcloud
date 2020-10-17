@@ -1,8 +1,5 @@
 FROM mailutest/nginx:pr-1421
 MAINTAINER Sophia Hadash <s.hadash@tue.nl>
 
-#RUN mkdir -p /letsencrypt-root/live/hadash.nl
-#RUN ln -s /letsencrypt-root/live/hadash.nl /certs
-
-RUN cp /letsencrypt-root/live/hadash.nl/privkey.pem /certs/key.pem
-RUN cp /letsencrypt-root/live/hadash.nl/cert.pem /certs/cert.pem
+RUN mkdir -p /letsencrypt-root/live/hadash.nl
+RUN ln -s /letsencrypt-root/live/hadash.nl /certs
