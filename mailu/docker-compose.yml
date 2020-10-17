@@ -35,7 +35,7 @@ services:
     volumes:
       - $ROOT/redis:/data
   imap:
-    image: mailu/dovecot:$VERSION
+    image: mailutest/dovecot:pr-1421
     restart: always
     env_file: mailu.env
     volumes:
@@ -44,7 +44,7 @@ services:
     depends_on:
       - front
   smtp:
-    image: mailu/postfix:$VERSION
+    image: mailutest/postfix:pr-1421
     restart: always
     env_file: mailu.env
     volumes:
@@ -53,7 +53,7 @@ services:
     depends_on:
       - front
   antispam:
-    image: mailu/rspamd:$VERSION
+    image: mailutest/rspamd:pr-1421
     restart: always
     env_file: mailu.env
     volumes:
@@ -92,7 +92,7 @@ services:
     depends_on:
       - imap
   fetchmail:
-    image: mailu/fetchmail:$VERSION
+    image: mailutest/fetchmail:pr-1421
     restart: always
     env_file: mailu.env
 volumes:
