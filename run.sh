@@ -24,6 +24,9 @@ export MYSQL_USER=nextcloud
 # clone rsnapshot-docker
 git clone https://github.com/helmuthb/rsnapshot-docker
 
+git clone https://github.com/Half-Shot/matrix-appservice-discord
+mv matrix-appservice-discord ./synapse/discord/src
+
 
 # generate synapse default config
 #docker run -it --rm \

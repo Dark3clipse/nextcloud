@@ -114,7 +114,7 @@ services:
       - nextcloud-net
   synapse-bridge-discord:
     build:
-      context: ./synapse/discord
+      context: ./synapse/discord/src
       dockerfile: Dockerfile
     image: shadash-bridge-discord:latest
     volumes:
