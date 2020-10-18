@@ -37,7 +37,7 @@ bridge:
 auth:
   # This MUST be a string (wrapped in quotes)
   clientID: "__DISCORD_CLIENT_ID__"
-  botToken: "synapse-discord-bot"
+  botToken: "__DISCORD_BOT_TOKEN__"
 logging:
   # What level should the logger output to the console at.
   console: "warn" #silly, verbose, info, http, warn, error, silent

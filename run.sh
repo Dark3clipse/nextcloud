@@ -15,6 +15,7 @@ if [ -z "$SYNAPSE_KEY_MACARON" ]; then echo "Environment variable SYNAPSE_KEY_MA
 if [ -z "$SYNAPSE_KEY_FORM" ]; then echo "Environment variable SYNAPSE_KEY_FORM is unset or empty." && exit 1; fi
 if [ -z "$SYNAPSE_KEY_SIGNING" ]; then echo "Environment variable SYNAPSE_KEY_SIGNING is unset or empty." && exit 1; fi
 if [ -z "$DISCORD_CLIENT_ID" ]; then echo "Environment variable DISCORD_CLIENT_ID is unset or empty." && exit 1; fi
+if [ -z "$DISCORD_BOT_TOKEN" ]; then echo "Environment variable DISCORD_BOT_TOKEN is unset or empty." && exit 1; fi
 
 # define some derivative variables
 export MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
@@ -41,6 +42,7 @@ sed -i "s#__SYNAPSE_KEY_FORM__#$SYNAPSE_KEY_FORM#g" ./synapse/homeserver.yaml
 sed -i "s#__SYNAPSE_KEY_SIGNING__#$SYNAPSE_KEY_SIGNING#g" ./synapse/synapse.sophiahadash.nl.signing.key
 sed -i "s#__SYNAPSE_POSTGRESS_PASSWORD__#$SYNAPSE_POSTGRESS_PASSWORD#g" ./synapse/whatsapp/config.yaml
 sed -i "s#__DISCORD_CLIENT_ID__#$DISCORD_CLIENT_ID#g" ./synapse/discord/config.yaml
+sed -i "s#__DISCORD_BOT_TOKEN__#$DISCORD_BOT_TOKEN#g" ./synapse/discord/config.yaml
 
 
 # generate synapse bridge registrations
