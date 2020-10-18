@@ -112,6 +112,17 @@ services:
     restart: always
     networks:
       - nextcloud-net
+  synapse-bridge-discord:
+    build:
+      context: ./synapse/discord
+      dockerfile: Dockerfile
+    image: shadash-bridge-discord:latest
+    volumes:
+      - $NEXTCLOUD_PATH/bridge-discord:/data:z
+      - ./synapse/discord/config.yaml:/data/config.yaml
+    restart: always
+    networks:
+      - nextcloud-net
   rsnapshot:
     build:
       context: ./rsnapshot-docker
