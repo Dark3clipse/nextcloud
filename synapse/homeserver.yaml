@@ -1379,6 +1379,7 @@ report_stats: true
 #
 app_service_config_files:
   - /data/bridges/whatsapp/registration.yaml
+  - /data/bridges/discord/registration.yaml
 #  - app_service_2.yaml
 
 # Uncomment to enable tracking of application service IP addresses. Implicitly

@@ -119,7 +119,6 @@ services:
     image: shadash-bridge-discord:latest
     volumes:
       - $NEXTCLOUD_PATH/bridge-discord:/data:z
-      - ./synapse/discord/config.yaml:/data/config.yaml
     restart: always
     networks:
       - nextcloud-net

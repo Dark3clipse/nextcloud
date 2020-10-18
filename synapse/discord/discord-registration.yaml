@@ -1,0 +1,16 @@
+as_token: c7357210-d00c-4b66-b5c7-02ecaabf1b80
+hs_token: ea990f81-0c6d-4eec-974a-1b6f7af70cb9
+id: discord-bridge
+namespaces:
+  aliases:
+    - exclusive: true
+      regex: '#_discord_.*'
+  rooms: []
+  users:
+    - exclusive: true
+      regex: '@_discord_.*'
+protocols:
+  - discord
+rate_limited: false
+sender_localpart: _discord_bot
+url: 'http://localhost:9005'
