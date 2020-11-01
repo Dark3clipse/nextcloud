@@ -36,16 +36,13 @@ services:
     networks:
       - nextcloud-net
   nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
-    image: shadash-nginx:latest
+    image: nginx:1.19.3-alpine
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/proxy.conf:/etc/nginx/proxy.conf
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/includes:/etc/nginx/includes
-      - letsencrypt:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt
       - nginx_log:/var/log/nginx
       - ./letsencrypt/production_public:/data/letsencrypt
       - $NEXTCLOUD_PATH/web:/var/www/html
@@ -64,62 +61,6 @@ services:
     ports:
       - 80:80
       - 443:443
-      - 110:110
-      - 143:143
-      - 993:993
-      - 995:995
-      - 25:25
-      - 465:465
-      - 587:587
-    networks:
-      - nextcloud-net
-  synapse:
-    image: matrixdotorg/synapse:3af9bb7198c64c6e6001b96cbfadc0bc2123d318-multiarch
-    container_name: synapse
-    volumes:
-      - $NEXTCLOUD_PATH/synapse:/data
-      - ./synapse/homeserver.yaml:/data/homeserver.yaml
-      - ./synapse/synapse.sophiahadash.nl.signing.key:/data/synapse.sophiahadash.nl.signing.key
-      - $NEXTCLOUD_PATH/mautrix-whatsapp/registration.yaml:/data/bridges/whatsapp/registration.yaml:ro
-    healthcheck:
-      test: [ "CMD", "curl", "-fSs", "http://localhost:8008/health" ]
-      interval: 1m
-      timeout: 10s
-      retries: 3
-    restart: always
-    depends_on:
-      - synapse-postgresql
-    networks:
-      - nextcloud-net
-  synapse-postgresql:
-    image: postgres:9.6.19
-    restart: always
-    container_name: postgres
-    environment:
-      POSTGRES_PASSWORD: $SYNAPSE_POSTGRESS_PASSWORD
-      POSTGRES_USER: synapse
-      POSTGRES_DB: synapse
-      POSTGRES_INITDB_ARGS: "--encoding='UTF8' --lc-collate='C' --lc-ctype='C'"
-    volumes:
-      - $NEXTCLOUD_PATH/synapse-postgres:/var/lib/postgresql/
-    networks:
-      - nextcloud-net
-  synapse-bridge-whatsapp:
-    image: dock.mau.dev/tulir/mautrix-whatsapp:00966626857b694aba78f4d40ae0a048f8da3ae4-amd64
-    volumes:
-      - $NEXTCLOUD_PATH/mautrix-whatsapp:/data:z
-      - ./synapse/whatsapp/config.yaml:/data/config.yaml
-    restart: always
-    networks:
-      - nextcloud-net
-  synapse-bridge-discord:
-    build:
-      context: ./synapse/discord/src
-      dockerfile: Dockerfile
-    image: shadash-bridge-discord:latest
-    volumes:
-      - $NEXTCLOUD_PATH/bridge-discord:/data:z
-    restart: always
     networks:
       - nextcloud-net
   rsnapshot:
@@ -151,8 +92,6 @@ services:
     networks:
       - nextcloud-net
 volumes:
-  letsencrypt:
-    driver: local
   nginx_log:
     driver: local
 networks:
