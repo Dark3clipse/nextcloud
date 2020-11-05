@@ -20,7 +20,7 @@ services:
     networks:
       - nextcloud-net
   nextcloud:
-    image: nextcloud:fpm
+    image: nextcloud:20.0.1-fpm
     volumes:
       - $NEXTCLOUD_PATH/web:/var/www/html
     environment:
