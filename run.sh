@@ -16,10 +16,7 @@ export MYSQL_DATABASE=nextcloud
 export MYSQL_USER=nextcloud
 
 # clone rsnapshot-docker
-git init
-git remote add origin https://github.com/helmuthb/rsnapshot-docker
-git fetch origin 113eb21889fe10f838e0bc3a66ecdc873e19f735
-git reset --hard FETCH_HEAD
+git clone https://github.com/helmuthb/rsnapshot-docker
 
 
 # deploy
