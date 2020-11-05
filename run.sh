@@ -16,7 +16,9 @@ export MYSQL_DATABASE=nextcloud
 export MYSQL_USER=nextcloud
 
 # clone rsnapshot-docker
-git clone https://github.com/helmuthb/rsnapshot-docker
+if [ ! -d rsnapshot-docker]; then
+	git clone https://github.com/helmuthb/rsnapshot-docker
+fi
 
 
 # deploy
