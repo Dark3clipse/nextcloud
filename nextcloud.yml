@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   mysql:
-    image: mariadb:10.5.7-focal
+    image: mariadb:c871924e98bcf3b694bc965d18a35b106713e4df439950e097447e97f410d949
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     volumes:
       - $NEXTCLOUD_PATH/mysql:/var/lib/mysql
