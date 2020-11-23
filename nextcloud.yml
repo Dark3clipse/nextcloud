@@ -94,6 +94,21 @@ services:
     restart: always
     networks:
       - nextcloud-net
+  bitwarden:
+    image: bitwardenrs/server:1.17.0
+    volumes:
+      - $NEXTCLOUD_PATH/bitwarden:/data
+    environment:
+      WEBSOCKET_ENABLED: 'true' # Required to use websockets
+      SIGNUPS_ALLOWED: 'true'   # set to false to disable signups
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    restart: always
+    networks:
+      - nextcloud-net
 volumes:
   nginx_log:
     driver: local

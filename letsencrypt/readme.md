@@ -17,7 +17,7 @@ docker-compose -f renew.yml -p letsencrypt up
 
 To automatically renew certificates add a crontab on a Docker Swarm manager node using `sudo crontab -e`:
 ```
-0 23 * * * docker-compose -f /home/shadash/buildserver/letsencrypt/renew.yml -p letsencrypt up && docker service update buildserver_nginx --force && docker service update buildserver_registry --force
+0 5 * * 7 docker-compose -f /home/shadash/nextcloud/nextcloud.yml -p nextcloud down && certbot renew --dry-run && docker-compose -f /home/shadash/nextcloud/nextcloud.yml -p nextcloud up
 ```
 This crontab executes every 24h and restarts services that use the certificates.
 
