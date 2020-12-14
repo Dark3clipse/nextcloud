@@ -1,5 +1,5 @@
 id: whatsapp
-url: http://localhost:29318
+url: http://synapse-bridge-whatsapp:29318
 as_token: __WHATSAPP_AS__
 hs_token: __WHATSAPP_HS__
 sender_localpart: __WHATSAPP_C__
