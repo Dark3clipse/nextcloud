@@ -71,7 +71,7 @@ bridge:
       require_verification: true
   permissions:
     '*': 5
-    '@admin:example.com': 100
+    '@shadash:matrix.sophiahadash.nl': 100
     example.com: 10
   relaybot:
     enabled: false
