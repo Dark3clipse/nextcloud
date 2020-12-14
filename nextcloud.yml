@@ -109,6 +109,21 @@ services:
     restart: always
     networks:
       - nextcloud-net
+  synapse:
+    image: matrixdotorg/synapse:v1.23.1
+    volumes:
+      - $NEXTCLOUD_PATH/synapse:/data
+      - ./synapse/homeserver.yaml:/data/homeserver.yaml
+      - ./synapse/matrix.sophiahadash.nl.log.config:/data/matrix.sophiahadash.nl.log.config
+      - ./synapse/matrix.sophiahadash.nl.signing.key:/data/matrix.sophiahadash.nl.signing.key
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    restart: always
+    networks:
+      - nextcloud-net
 volumes:
   nginx_log:
     driver: local
