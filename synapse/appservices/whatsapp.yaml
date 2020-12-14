@@ -1,0 +1,12 @@
+id: whatsapp
+url: http://localhost:29318
+as_token: __WHATSAPP_AS__
+hs_token: __WHATSAPP_HS__
+sender_localpart: __WHATSAPP_C__
+rate_limited: false
+namespaces:
+  users:
+  - regex: ^@whatsapp_[0-9]+:matrix.sophiahadash.nl$
+    exclusive: true
+  - regex: ^@whatsappbot:matrix.sophiahadash.nl$
+    exclusive: true

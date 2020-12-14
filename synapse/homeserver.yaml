@@ -238,7 +238,7 @@ listeners:
 
 # How to reach the server admin, used in ResourceLimitError
 #
-#admin_contact: 'mailto:admin@server.com'
+admin_contact: 'mailto:sophiahadash@gmail.com'
 
 # Global blocking
 #
@@ -1378,8 +1378,8 @@ report_stats: true
 
 # A list of application service config files to use
 #
-#app_service_config_files:
-#  - app_service_1.yaml
+app_service_config_files:
+  - whatsapp.yaml
 #  - app_service_2.yaml
 
 # Uncomment to enable tracking of application service IP addresses. Implicitly
