@@ -110,7 +110,7 @@ services:
     networks:
       - nextcloud-net
   synapse:
-    image: matrixdotorg/synapse:v1.23.1
+    image: matrixdotorg/synapse:v1.24.0
     volumes:
       - $NEXTCLOUD_PATH/synapse:/data
       - ./synapse/homeserver.yaml:/data/homeserver.yaml
