@@ -124,6 +124,22 @@ services:
     restart: always
     networks:
       - nextcloud-net
+  synapse-postgresql:
+    image: postgres:13.1
+    environment:
+      - POSTGRES_USER=synapse
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB=synapse
+    volumes:
+      - $NEXTCLOUD_PATH/synapse-postgresql:/var/lib/postgresql/data
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    restart: always
+    networks:
+      - nextcloud-net
 volumes:
   nginx_log:
     driver: local

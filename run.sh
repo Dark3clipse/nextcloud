@@ -14,6 +14,10 @@ if [ -z "$BACKUP_PATH" ]; then echo "Environment variable BACKUP_PATH is unset o
 export MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
 export MYSQL_DATABASE=nextcloud
 export MYSQL_USER=nextcloud
+export POSTGRES_PASSWORD=$MYSQL_PASSWORD
+
+# insert postgresql password in synapse/homeserver.yaml
+sed -i "s/__POSTGRESQL_PASSWORD__/$MYSQL_PASSWORD/g" ./synapse/homeserver.yaml
 
 # clone rsnapshot-docker
 if [ ! -d ./rsnapshot-docker ]; then
