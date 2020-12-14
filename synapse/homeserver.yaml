@@ -40,7 +40,7 @@ pid_file: /data/homeserver.pid
 # under the 'listeners' configuration, however this is a security risk:
 # https://github.com/matrix-org/synapse#security-note
 #
-#web_client_location: https://riot.example.com/
+web_client_location: https://chat.sophiahadash.nl/
 
 # The public-facing base URL that clients use to access this HS
 # (not including _matrix/...). This is the same URL a user would
@@ -84,7 +84,7 @@ pid_file: /data/homeserver.pid
 # If set to 'true', allows any other homeserver to fetch the server's public
 # rooms directory via federation. Defaults to 'false'.
 #
-#allow_public_rooms_over_federation: true
+allow_public_rooms_over_federation: true
 
 # The default room version for newly created rooms.
 #
@@ -472,7 +472,7 @@ retention:
 # of the public Matrix network: only configure it to `1.3` if you have an
 # entirely private federation setup and you can ensure TLS 1.3 support.
 #
-#federation_client_minimum_tls_version: 1.2
+federation_client_minimum_tls_version: 1.2
 
 # Skip federation certificate verification on the following whitelist
 # of domains.
@@ -1016,18 +1016,18 @@ url_preview_accept_language:
 # This homeserver's ReCAPTCHA public key. Must be specified if
 # enable_registration_captcha is enabled.
 #
-#recaptcha_public_key: "YOUR_PUBLIC_KEY"
+recaptcha_public_key: "__RECAPTCHA_PUBLIC__"
 
 # This homeserver's ReCAPTCHA private key. Must be specified if
 # enable_registration_captcha is enabled.
 #
-#recaptcha_private_key: "YOUR_PRIVATE_KEY"
+recaptcha_private_key: "__RECAPTCHA_PRIVATE__"
 
 # Uncomment to enable ReCaptcha checks when registering, preventing signup
 # unless a captcha is answered. Requires a valid ReCaptcha
 # public/private key. Defaults to 'false'.
 #
-#enable_registration_captcha: true
+enable_registration_captcha: true
 
 # The API endpoint to use for verifying m.login.recaptcha responses.
 # Defaults to "https://www.recaptcha.net/recaptcha/api/siteverify".
@@ -1071,7 +1071,7 @@ url_preview_accept_language:
 
 # Enable registration for new users.
 #
-#enable_registration: false
+enable_registration: true
 
 # Optional account validity configuration. This allows for accounts to be denied
 # any request after a given period.
