@@ -148,6 +148,7 @@ services:
     volumes:
       - $NEXTCLOUD_PATH/synapse-bridge-whatsapp:/data
       - ./synapse/whatsapp/config.yaml:/data/config.yaml
+      - ./synapse/appservices/whatsapp.yaml:/data/registration.yaml
     deploy:
       mode: replicated
       replicas: 1
