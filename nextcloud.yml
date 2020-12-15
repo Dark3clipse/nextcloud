@@ -135,6 +135,11 @@ services:
       - POSTGRES_INITDB_ARGS=--encoding='UTF8' --lc-collate='C' --lc-ctype='C'
     volumes:
       - $NEXTCLOUD_PATH/synapse-postgresql:/var/lib/postgresql/data
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 20000
+        hard: 40000
     deploy:
       mode: replicated
       replicas: 1
