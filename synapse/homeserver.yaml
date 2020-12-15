@@ -1161,17 +1161,17 @@ account_validity:
 # Mandate that users are only allowed to associate certain formats of
 # 3PIDs with accounts on this server.
 #
-#allowed_local_3pids:
-#  - medium: email
-#    pattern: '.*@matrix\.org'
+allowed_local_3pids:
+  - medium: email
+    pattern: '.*'
 #  - medium: email
 #    pattern: '.*@vector\.im'
-#  - medium: msisdn
-#    pattern: '\+44'
+  - medium: msisdn
+    pattern: '\+31'
 
 # Enable 3PIDs lookup requests to identity servers from this server.
 #
-#enable_3pid_lookup: true
+enable_3pid_lookup: true
 
 # If set, allows registration of standard or admin accounts by anyone who
 # has the shared secret, even if registration is otherwise disabled.
@@ -1198,7 +1198,10 @@ registration_shared_secret: "p7wj.41l8=TCuR3ptx6oGMk;doB^;HMRb8qW3.-dYYYTwi9;#."
 # (By default, no suggestion is made, so it is left up to the client.
 # This setting is ignored unless public_baseurl is also set.)
 #
-#default_identity_server: https://matrix.org
+default_identity_server: https://matrix.org
+trusted_third_party_id_servers:
+  - matrix.org
+  - vector.im
 
 # Handle threepid (email/phone etc) registration and password resets through a set of
 # *trusted* identity servers. Note that this allows the configured identity server to
