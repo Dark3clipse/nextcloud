@@ -136,7 +136,6 @@ services:
     volumes:
       - $NEXTCLOUD_PATH/synapse-postgresql:/var/lib/postgresql/data
       - ./synapse/postgresql.conf:/etc/postgresql/postgresql.conf
-    user: "999:0"
     ulimits:
       nproc: 65535
       nofile:
