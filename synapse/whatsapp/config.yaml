@@ -32,10 +32,10 @@ bridge:
   displayname_template: '{{if .Notify}}{{.Notify}}{{else}}{{.Jid}}{{end}} (WA)'
   community_template: whatsapp_{{.Localpart}}={{.Server}}
   connection_timeout: 20
-  fetch_message_on_timeout: false
-  delivery_receipts: false
+  fetch_message_on_timeout: true
+  delivery_receipts: true
   login_qr_regen_count: 2
-  max_connection_attempts: 3
+  max_connection_attempts: 6
   connection_retry_delay: -1
   report_connection_retry: true
   chat_list_wait: 30
@@ -45,14 +45,14 @@ bridge:
   call_notices:
     start: true
     end: true
-  initial_chat_sync_count: 10
-  initial_history_fill_count: 20
+  initial_chat_sync_count: 100
+  initial_history_fill_count: 200
   initial_history_disable_notifications: false
   recovery_chat_sync_count: -1
   recovery_history_backfill: true
-  sync_max_chat_age: 259200
+  sync_max_chat_age: 259200000
   sync_with_custom_puppets: true
-  sync_direct_chat_list: false
+  sync_direct_chat_list: true
   default_bridge_receipts: true
   default_bridge_presence: true
   login_shared_secret: ""
@@ -60,7 +60,7 @@ bridge:
   private_chat_portal_meta: false
   resend_bridge_info: false
   whatsapp_thumbnail: false
-  allow_user_invite: false
+  allow_user_invite: true
   command_prefix: '!wa'
   encryption:
     allow: false
