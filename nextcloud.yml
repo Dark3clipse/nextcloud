@@ -47,7 +47,7 @@ services:
       - ./nginx/includes:/etc/nginx/includes
       - /etc/letsencrypt:/etc/letsencrypt
       - nginx_log:/var/log/nginx
-      - ./letsencrypt/production_public:/data/letsencrypt
+      - /data/letsencrypt:/data/letsencrypt
       - $NEXTCLOUD_PATH/web:/var/www/html
     deploy:
       mode: replicated

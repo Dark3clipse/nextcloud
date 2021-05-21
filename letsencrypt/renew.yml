@@ -8,7 +8,7 @@ services:
       - letsencrypt-lib:/var/lib/letsencrypt
       - letsencrypt-log:/var/log/letsencrypt
       - ./production_public:/data/letsencrypt
-    command: ["certbot", "renew", "--webroot",  "-w", "/data/letsencrypt", "--quiet"]
+    command: ["certbot", "renew", "--webroot",  "-w", "/data/letsencrypt"]
     networks:
       - letsencrypt-net
 volumes:
