@@ -36,6 +36,8 @@ if [ ! -d ./rsnapshot-docker ]; then
 	git clone https://github.com/helmuthb/rsnapshot-docker
 fi
 
+# add crontab
+# 0 23 * * * certbot renew --webroot -w /data/letsencrypt
 
 # deploy
 docker-compose --env-file ./.env -f nextcloud.yml -p nextcloud up -d
